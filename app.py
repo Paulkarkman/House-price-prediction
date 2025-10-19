@@ -49,13 +49,13 @@ def main():
     if st.button('Predict house Price'):
         try:
         # Convert inputs to numeric types
-         Square_Footage = float(Square_Footage)
-         Num_Bedrooms = float(Num_Bedrooms)
-         Num_Bathrooms = float( Num_Bathrooms)
+         Square_Footage = int(Square_Footage)
+         Num_Bedrooms = int(Num_Bedrooms)
+         Num_Bathrooms = int( Num_Bathrooms)
          Year_Built = int(Year_Built)
-         Lot_Size = int(Lot_Size)
+         Lot_Size = float(Lot_Size)
          Garage_Size = int(Garage_Size)
-         Neighborhood_Quality = float(Neighborhood_Quality)
+         Neighborhood_Quality = int(Neighborhood_Quality)
        
 
         # Call the prediction function (just fix indentation)
@@ -71,4 +71,5 @@ def main():
 if __name__ == '__main__':
 
     main()         
+
 
