@@ -5,7 +5,7 @@ import numpy as np
 import streamlit as st
 
 # Load the trained model
-loaded_model = pickle.load(open('C:/Users/Benjamin/Desktop/HOUSE PRICE/house_sales_data.sav', 'rb'))
+loaded_model = pickle.load(open('house_sales_data.sav', 'rb'))
 
 # Prediction function
 def house_price_prediction(Square_Footage, Num_Bedrooms, Num_Bathrooms, Year_Built, Lot_Size, Garage_Size, Neighborhood_Quality):
@@ -63,3 +63,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
