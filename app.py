@@ -1,7 +1,5 @@
-
 import pickle
 import pandas as pd
-import numpy as np
 import streamlit as st
 
 # Load the trained model
@@ -9,7 +7,7 @@ loaded_model = pickle.load(open('house_sales_data.sav', 'rb'))
 
 # Prediction function
 def house_price_prediction(Square_Footage, Num_Bedrooms, Num_Bathrooms, Year_Built, Lot_Size, Garage_Size, Neighborhood_Quality):
-    # Use actual user input values
+    # Create DataFrame from user input
     new_house = pd.DataFrame([{
         'Square_Footage': Square_Footage,
         'Num_Bedrooms': Num_Bedrooms,
@@ -22,45 +20,32 @@ def house_price_prediction(Square_Footage, Num_Bedrooms, Num_Bathrooms, Year_Bui
 
     # Predict price
     predicted_price = loaded_model.predict(new_house)
-
     return predicted_price[0]
 
 
-# Main Streamlit app
+# Streamlit app
 def main():
     st.title("🏠 House Price Prediction App")
+    st.write("Designed by **Benjamin NIYORUFATIRO**")
 
-    # Input fields
-    Square_Footage = st.text_input('Square Footage (e.g., 1360)')
-    Num_Bedrooms = st.text_input('Number of Bedrooms (e.g., 2)')
-    Num_Bathrooms = st.text_input('Number of Bathrooms (e.g., 1)')
-    Year_Built = st.text_input('Year Built (e.g., 1981)')
-    Lot_Size = st.text_input('Lot Size (e.g., 0.6)')
-    Garage_Size = st.text_input('Garage Size (e.g., 0)')
-    Neighborhood_Quality = st.text_input('Neighborhood Quality (e.g., 5)')
+    # Number input fields (no manual typing errors)
+    Square_Footage = st.number_input('Square Footage', min_value=100.0, max_value=10000.0, value=1360.0)
+    Num_Bedrooms = st.number_input('Number of Bedrooms', min_value=1, max_value=20, value=2)
+    Num_Bathrooms = st.number_input('Number of Bathrooms', min_value=1, max_value=20, value=1)
+    Year_Built = st.number_input('Year Built', min_value=1800, max_value=2025, value=1981)
+    Lot_Size = st.number_input('Lot Size (in acres)', min_value=0.0, max_value=100.0, value=0.6)
+    Garage_Size = st.number_input('Garage Size (number of cars)', min_value=0, max_value=10, value=0)
+    Neighborhood_Quality = st.number_input('Neighborhood Quality (1–10)', min_value=1, max_value=10, value=5)
 
-    # Predict button
     if st.button('Predict House Price'):
-        try:
-            # Convert inputs to correct numeric types
-            Square_Footage = float(Square_Footage)
-            Num_Bedrooms = int(Num_Bedrooms)
-            Num_Bathrooms = int(Num_Bathrooms)
-            Year_Built = int(Year_Built)
-            Lot_Size = float(Lot_Size)
-            Garage_Size = int(Garage_Size)
-            Neighborhood_Quality = int(Neighborhood_Quality)
+        # Call prediction function directly (no conversion errors now)
+        price = house_price_prediction(
+            Square_Footage, Num_Bedrooms, Num_Bathrooms,
+            Year_Built, Lot_Size, Garage_Size, Neighborhood_Quality
+        )
 
-            # Call prediction function
-            price = house_price_prediction(Square_Footage, Num_Bedrooms, Num_Bathrooms,
-                                           Year_Built, Lot_Size, Garage_Size, Neighborhood_Quality)
-
-            st.success(f'💰 The predicted price for the house is: RWF {price:,.2f}')
-
-        except ValueError:
-            st.error("❌ Please enter valid numeric values for all inputs.")
+        st.success(f"💰 Predicted House Price: **RWF {price:,.2f}**")
 
 
 if __name__ == '__main__':
     main()
-
