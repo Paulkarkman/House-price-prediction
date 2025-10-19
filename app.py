@@ -63,7 +63,7 @@ def main():
                                         Year_Built,Lot_Size,Garage_Size,Neighborhood_Quality  )
       
 
-         st.success(f'The predicted price for the house is: RWF {price:.2f}')
+         st.success(f'The predicted price for the house is: frw {price:.2f}')
         except ValueError:
             
          st.error("Please enter valid numeric values for all inputs.")
@@ -71,3 +71,4 @@ def main():
 if __name__ == '__main__':
 
     main()         
+
