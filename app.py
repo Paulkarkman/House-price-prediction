@@ -12,7 +12,7 @@ import streamlit as st
 
 
 # Load the trained model
-loaded_model = pickle.load(open('C:/Users/Benjamin/Desktop/HOUSE PRICE/house_sales_data.sav', 'rb'))
+loaded_model = pickle.load(open('house_sales_data.sav', 'rb'))
 
 def house_price_prediction(Square_Footage,Num_Bedrooms,Num_Bathrooms,Year_Built,Lot_Size,Garage_Size,Neighborhood_Quality):
      
@@ -34,7 +34,8 @@ def house_price_prediction(Square_Footage,Num_Bedrooms,Num_Bathrooms,Year_Built,
     return predicted_house[0]
 # Main Streamlit app
 def main():
-    st.title("house Price Prediction")
+    st.title("MANIRAGABA,
+    house Price Prediction")
 
     # Input fields for all features
     Square_Footage = st.text_input('Square_Footage (numeric code, e.g., 1360)')
@@ -69,4 +70,5 @@ def main():
          st.error("Please enter valid numeric values for all inputs.")
          
 if __name__ == '__main__':
+
     main()         
