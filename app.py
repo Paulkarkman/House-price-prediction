@@ -26,7 +26,7 @@ def house_price_prediction(Square_Footage, Num_Bedrooms, Num_Bathrooms, Year_Bui
 # Streamlit app
 def main():
     st.title("🏠 House Price Prediction App")
-    st.write("Designed by **Benjamin NIYORUFATIRO**")
+    st.write("Designed by **MANIRAGABA Jean Paul**")
 
     # Number input fields (no manual typing errors)
     Square_Footage = st.number_input('Square Footage', min_value=100.0, max_value=10000.0, value=1360.0)
@@ -49,3 +49,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
