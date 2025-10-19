@@ -34,8 +34,7 @@ def house_price_prediction(Square_Footage,Num_Bedrooms,Num_Bathrooms,Year_Built,
     return predicted_house[0]
 # Main Streamlit app
 def main():
-    st.title("MANIRAGABA,
-    house Price Prediction")
+    st.title("house Price Prediction")
 
     # Input fields for all features
     Square_Footage = st.text_input('Square_Footage (numeric code, e.g., 1360)')
