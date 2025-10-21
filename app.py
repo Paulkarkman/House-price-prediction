@@ -44,9 +44,10 @@ def main():
             Year_Built, Lot_Size, Garage_Size, Neighborhood_Quality
         )
 
-        st.success(f"💰 Predicted House Price: **RWF {price:,.2f}**")
+        st.success(f"💰 Predicted House Price: **$ {price:,.2f}**")
 
 
 if __name__ == '__main__':
     main()
+
 
